@@ -4,40 +4,4 @@
     Layout = "mainLayout.cshtml";
 }
 
-@*
-<section class="relative min-h-[640px] flex items-center">
-
-    <div class="absolute inset-0">
-        @if (Model. != null)
-        {
-            <img src="@Model.MediaUrl()" alt="" class="w-full h-full object-cover" />
-        }
-        <div class="absolute inset-0 bg-white/10"></div>
-    </div>
-
-    <!--- Text --->
-    <div class="container relative z-10 max-w-6xl px-10 pl-64">
-        <div class="w-full flex flex-col gap-2 md:gap-3">
-            <h1 class="text-[4.5rem] font-bold leading-tight text-[#4F5955] mb-1">
-                @Html.Raw(Model.)
-            </h1>
-
-            <div class="text-[#4F5955]/90 max-w-[580px] leading-relaxed">
-                @Html.Raw(Model.HeroText)
-            </div>
-
-            <!--- Link --->
-            @if (Model.HeroLink != null)
-            {
-                <a class="bg-[#4F5955] text-white py-3 px-10 w-[182px] h-[57px]
-                 no-underline rounded-xl cursor-pointer font-semibold
-                 inline-flex items-center justify-center hover:bg-[#3e4743] transition-colors shadow-sm mt-4"
-                   href="@Model.HeroLink.Url">
-                    @Model.HeroLink.Name
-                </a>
-            }
-        </div>
-    </div>
-</section>
-
-*@
+@Html.GetBlockListHtml(Model.Sections)
