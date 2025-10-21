@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zwh3blcg+vA=",
+  "dgSpecHash": "9QxdkWDIoJY=",
   "success": true,
-  "projectFilePath": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämingsuppgift/OnatrixProject/OnatrixProject.csproj",
+  "projectFilePath": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämningsuppgift/OnatrixProject/OnatrixProject.csproj",
   "expectedPackageFiles": [
     "/Users/mykasulin/.nuget/packages/asp.versioning.abstractions/8.1.0/asp.versioning.abstractions.8.1.0.nupkg.sha512",
     "/Users/mykasulin/.nuget/packages/asp.versioning.http/8.1.0/asp.versioning.http.8.1.0.nupkg.sha512",

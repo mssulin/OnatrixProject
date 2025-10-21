@@ -10,7 +10,7 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# macOS systemfiler
+# macOS
 .DS_Store
 .AppleDouble
 .LSOverride

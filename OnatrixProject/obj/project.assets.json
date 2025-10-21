@@ -19228,11 +19228,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämingsuppgift/OnatrixProject/OnatrixProject.csproj",
+      "projectUniqueName": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämningsuppgift/OnatrixProject/OnatrixProject.csproj",
       "projectName": "OnatrixProject",
-      "projectPath": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämingsuppgift/OnatrixProject/OnatrixProject.csproj",
+      "projectPath": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämningsuppgift/OnatrixProject/OnatrixProject.csproj",
       "packagesPath": "/Users/mykasulin/.nuget/packages/",
-      "outputPath": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämingsuppgift/OnatrixProject/obj/",
+      "outputPath": "/Users/mykasulin/Desktop/WEBBUTVECKLING/CMS/Inlämningsuppgift/OnatrixProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mykasulin/.nuget/NuGet/NuGet.Config"

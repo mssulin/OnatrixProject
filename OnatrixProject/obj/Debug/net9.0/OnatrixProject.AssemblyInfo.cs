@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnatrixProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1d48b39dd31d677cb99905043e98174e2e26578")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnatrixProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnatrixProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
