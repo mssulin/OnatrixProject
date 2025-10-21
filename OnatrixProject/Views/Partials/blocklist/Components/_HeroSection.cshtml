@@ -1,0 +1,41 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using Umbraco.Cms.Core.Models
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.HeroSection)Model.Content;
+}
+
+<section class="relative min-h-[640px] flex items-center">
+
+    <div class="absolute inset-0">
+        @if (content.HeroBgImg!= null)
+        {
+            <img src="@content.HeroBgImg.Url()" alt="" class="w-full h-full object-cover" />
+        }
+        <div class="absolute inset-0 bg-white/10"></div>
+    </div>
+
+    <!--- Text --->
+    <div class="container relative z-10 max-w-6xl px-10 pl-64">
+        <div class="w-full flex flex-col gap-2 md:gap-3">
+            <h1 class="text-[4.5rem] font-bold leading-tight text-[#4F5955] mb-1">
+                @Html.Raw(content.HeroTitle)
+            </h1>
+
+            <div class="text-[#4F5955]/90 max-w-[580px] leading-relaxed">
+                @Html.Raw(content.HeroText)
+            </div>
+
+            <!--- Link --->
+            @if (content.HeroLink != null)
+            {
+                <a class="bg-[#4F5955] text-white py-3 px-10 w-[182px] h-[57px]
+                 no-underline rounded-xl cursor-pointer font-semibold
+                 inline-flex items-center justify-center hover:bg-[#3e4743] transition-colors shadow-sm mt-4"
+                   href="@content.HeroLink.Url">
+                    @content.HeroLink.Name
+                </a>
+            }
+        </div>
+    </div>
+</section>
