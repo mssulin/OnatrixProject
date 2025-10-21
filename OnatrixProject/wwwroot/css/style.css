@@ -707,6 +707,14 @@ html {
   z-index: 10;
 }
 
+.col-span-12{
+  grid-column: span 12 / span 12;
+}
+
+.col-span-6{
+  grid-column: span 6 / span 6;
+}
+
 .float-start{
   float: inline-start;
 }
@@ -770,6 +778,10 @@ html {
 
 .mt-5{
   margin-top: 1.25rem;
+}
+
+.mt-8{
+  margin-top: 2rem;
 }
 
 .box-border{
@@ -883,6 +895,14 @@ html {
   height: 100%;
 }
 
+.h-\[54px\]{
+  height: 54px;
+}
+
+.h-\[50px\]{
+  height: 50px;
+}
+
 .min-h-\[350px\]{
   min-height: 350px;
 }
@@ -893,6 +913,14 @@ html {
 
 .min-h-screen{
   min-height: 100vh;
+}
+
+.w-1\/3{
+  width: 33.333333%;
+}
+
+.w-1\/4{
+  width: 25%;
 }
 
 .w-\[182px\]{
@@ -1273,6 +1301,10 @@ html {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-cols-12{
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
 .flex-row{
   flex-direction: row;
 }
@@ -1463,6 +1495,18 @@ html {
 
 .gap-4{
   gap: 1rem;
+}
+
+.gap-5{
+  gap: 1.25rem;
+}
+
+.gap-6{
+  gap: 1.5rem;
+}
+
+.gap-y-5{
+  row-gap: 1.25rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
@@ -1782,6 +1826,18 @@ html {
   border-radius: 0.75rem;
 }
 
+.rounded-sm{
+  border-radius: 0.125rem;
+}
+
+.rounded-md{
+  border-radius: 0.375rem;
+}
+
+.rounded-lg{
+  border-radius: 0.5rem;
+}
+
 .rounded-b{
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -1910,6 +1966,10 @@ html {
   border-style: none;
 }
 
+.border-\[var\(--color-border-gray\)\]{
+  border-color: var(--color-border-gray);
+}
+
 .border-\[var\(--color-white-100\)\]{
   border-color: var(--color-white-100);
 }
@@ -1917,6 +1977,10 @@ html {
 .bg-\[\#4F5955\]{
   --tw-bg-opacity: 1;
   background-color: rgb(79 89 85 / var(--tw-bg-opacity));
+}
+
+.bg-\[\@sectionColor\]{
+  background-color: @sectionColor;
 }
 
 .bg-\[rgb\(255\2c 0\2c 0\)\]{
@@ -2071,9 +2135,19 @@ html {
   padding-right: 1.25rem;
 }
 
+.px-6{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .py-\[4rem\]{
@@ -2081,8 +2155,21 @@ html {
   padding-bottom: 4rem;
 }
 
+.py-\[1rem\]{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pb-5{
+  padding-bottom: 1.25rem;
+}
+
 .pl-64{
   padding-left: 16rem;
+}
+
+.pt-5{
+  padding-top: 1.25rem;
 }
 
 .text-left{
@@ -2145,6 +2232,10 @@ html {
   font-family: Poppins, sans-serif;
 }
 
+.text-\[-875rem\]{
+  font-size: -875rem;
+}
+
 .text-\[\.875rem\]{
   font-size: .875rem;
 }
@@ -2158,12 +2249,25 @@ html {
   line-height: 1.25rem;
 }
 
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-bold{
   font-weight: 700;
 }
 
 .font-semibold{
   font-weight: 600;
+}
+
+.font-thin{
+  font-weight: 100;
+}
+
+.font-light{
+  font-weight: 300;
 }
 
 .uppercase{
@@ -2253,6 +2357,10 @@ html {
 
 .text-\[\#4F5955\]\/90{
   color: rgb(79 89 85 / 0.9);
+}
+
+.text-\[var\(--color-notel\)\]{
+  color: var(--color-notel);
 }
 
 .text-\[var\(--color-primary\)\]{
@@ -2707,12 +2815,24 @@ html {
 }
 
 @media (min-width: 640px){
+  .sm\:col-span-6{
+    grid-column: span 6 / span 6;
+  }
+
   .sm\:underline{
     text-decoration-line: underline;
   }
 }
 
 @media (min-width: 768px){
+  .md\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
+
+  .md\:col-span-3{
+    grid-column: span 3 / span 3;
+  }
+
   .md\:gap-3{
     gap: 0.75rem;
   }
