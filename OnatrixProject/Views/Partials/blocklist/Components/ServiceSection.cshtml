@@ -3,7 +3,6 @@
 @{
     var content = (ContentModels.ServiceSection)Model.Content;
     var settings = Model.Settings as ContentModels.ServiceSettings;
-    var serviceList = content.ServiceList;
 
     var sectionColor = settings?.ServiceBgColor?.Color ?? "#FFFFFF";
 }
@@ -18,25 +17,6 @@
             }
             
             <div class="rte">@Html.Raw(content.ServiceTitle)</div>
-        </div>
-
-        <div class="mt-8 grid grid-cols-12 gap-6">
-            @if (serviceList != null)
-            {
-                var i = 0;
-                foreach (var service in serviceList)
-                {
-                    var span = i < 3
-                        ? "col-span-12 sm:col-span-6 md:col-span-4"
-                        : "col-span-6 md:col-span-3";
-
-                    <div class="@span">
-                        @await Html.PartialAsync("blocklist/Components/ServiceItem", service)
-                    </div>
-
-                    i++;
-                }
-            }
         </div>
     </div>
 </section>

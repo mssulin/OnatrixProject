@@ -58,14 +58,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string ServiceLabel => this.Value<string>(_publishedValueFallback, "serviceLabel");
 
 		///<summary>
-		/// Service
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("serviceList")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ServiceList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "serviceList");
-
-		///<summary>
 		/// Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]

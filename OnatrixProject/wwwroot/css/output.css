@@ -649,6 +649,10 @@ video {
   margin-top: 2rem;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -745,6 +749,10 @@ video {
   gap: 1.5rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -771,6 +779,14 @@ video {
 
 .bg-white {
   background-color: var(--color-white);
+}
+
+.bg-white-100 {
+  background-color: var(--color-white-100);
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
 }
 
 .object-cover {
@@ -817,8 +833,21 @@ video {
   padding-bottom: 4rem;
 }
 
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 .pl-64 {
   padding-left: 16rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .font-poppins {
@@ -853,6 +882,19 @@ video {
   line-height: 1rem;
 }
 
+.text-\[2\.5rem\] {
+  font-size: 2.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-\[10px\] {
+  font-size: 10px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -871,6 +913,10 @@ video {
 
 .leading-tight {
   line-height: 1.25;
+}
+
+.leading-none {
+  line-height: 1;
 }
 
 .text-\[\#4F5955\] {
@@ -922,6 +968,38 @@ video {
   transition-duration: 150ms;
 }
 
+.\[background-image\:url\(\'\/images\/backgrounds\/Rectangle-left\.png\'\)\2c _url\(\'\/images\/backgrounds\/Rectangle-right\.png\'\)\] {
+  background-image: url('/images/backgrounds/Rectangle-left.png'), url('/images/backgrounds/Rectangle-right.png');
+}
+
+.\[background-image\:url\(\/\)\] {
+  background-image: url(/);
+}
+
+.\[background-image\:url\(\/images\/\)\] {
+  background-image: url(/images/);
+}
+
+.\[background-image\:url\(\/images\/backgrounds\/Re\)\] {
+  background-image: url(/images/backgrounds/Re);
+}
+
+.\[background-image\:url\(\/images\/backgrounds\/header-bg\.png\)\] {
+  background-image: url(/images/backgrounds/header-bg.png);
+}
+
+.\[background-position\:left_bottom\2c _right_top\] {
+  background-position: left bottom, right top;
+}
+
+.\[background-position\:left_bottom\2c top-right\] {
+  background-position: left bottom,top-right;
+}
+
+.\[background-size\:auto\2c _auto\] {
+  background-size: auto, auto;
+}
+
 body {
   font-family: Poppins, sans-serif;
 }
@@ -941,6 +1019,10 @@ body {
 }
 
 .hover\:text-\[var\(--color-secondary\)\]:hover {
+  color: var(--color-secondary);
+}
+
+.hover\:text-secondary:hover {
   color: var(--color-secondary);
 }
 
