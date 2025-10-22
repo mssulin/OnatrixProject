@@ -8,35 +8,33 @@
     var teamList = content.TeamMemberList;
 }
 
-<section class="py-[4rem] bg-[var(--color-white-100)])]">
+<section class="py-[4rem] bg-white">
     <div class="max-w-7xl mx-auto px-4">
 
-            <!--- Heading--->
+        <!--- Heading --->
         <div class="flex flex-col items-center">
-            <h2 class="text-[-875rem] text-[var(--color-secondary)] font-bold uppercase">@content.TeamLabel</h2>
+            <h2 class="text-[.875rem] text-secondary font-bold uppercase">@content.TeamLabel</h2>
             <div class="rte">@Html.Raw(content.TeamTitle)</div>
         </div>
         
-
         <!--- TeamList --->
         <div class="mt-8 grid grid-cols-12 gap-6">
-      @if (teamList != null)
-      {
-          var i = 0;
-          foreach (var member in teamList)
-          {
-            
-              var span = i < 3
-                  ? "col-span-12 sm:col-span-6 md:col-span-4"
-                  : "col-span-6 md:col-span-3";
+            @if (teamList != null)
+            {
+                var i = 0;
+                foreach (var member in teamList)
+                {
+                    var span = i < 3
+                        ? "col-span-12 sm:col-span-6 md:col-span-4"
+                        : "col-span-6 md:col-span-3";
 
-              <div class="@span">
-                  @await Html.PartialAsync("blocklist/Components/teamMember", member)
-              </div>
+                    <div class="@span">
+                        @await Html.PartialAsync("blocklist/Components/teamMember", member)
+                    </div>
 
-              i++;
-          }
-      }
-    </div>
+                    i++;
+                }
+            }
+        </div>
     </div>
 </section>

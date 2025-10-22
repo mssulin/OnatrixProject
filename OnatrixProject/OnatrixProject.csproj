@@ -24,6 +24,10 @@
       <_ContentIncludedByDefault Remove="Views\Partials\Sections\_ServiceSection.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="wwwroot\css\input.css" />
+    </ItemGroup>
+
     <PropertyGroup>
         <!-- Razor files are needed for the backoffice to work correctly -->
         <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>

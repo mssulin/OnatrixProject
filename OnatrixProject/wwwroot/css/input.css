@@ -1,0 +1,31 @@
+:root {
+    --color-primary: #4F5955;
+    --color-secondary: #D9C3A9;
+    --color-white: #fff;
+    --color-white-100: #F7F7F7;
+    --color-black: #0E0E0E;
+    --color-main-light: #606966;
+    --color-accent: #F2EDDC;
+    --color-gray-400: #4B5264;
+    --color-body-text: #535656;
+    --color-body-100: #999999;
+    --color-notel: #9C9EA6;
+    --color-border-gray: #EAEAEA;
+    --color-border-400: #C7C8C9;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply font-poppins;
+}
+
+.rte h3 {
+    @apply text-[2.5rem] text-primary font-bold;
+}
+
+.current a{
+    @apply text-secondary;
+}

@@ -19,7 +19,7 @@
     <!--- Text --->
     <div class="container relative z-10 max-w-6xl px-10 pl-64">
         <div class="w-full flex flex-col gap-2 md:gap-3">
-            <h1 class="text-[4.5rem] font-bold leading-tight text-[#4F5955] mb-1">
+            <h1 class="text-[4.5rem] font-bold leading-tight text-[var(--color-primary)]] mb-1">
                 @Html.Raw(content.HeroTitle)
             </h1>
 
@@ -30,9 +30,9 @@
             <!--- Link --->
             @if (content.HeroLink != null)
             {
-                <a class="bg-[#4F5955] text-white py-3 w-[182px] h-[50px]
+                <a class="bg-[var(--color-primary)] text-[var(--color-white)] py-3 w-[182px] h-[50px]
                  no-underline rounded-lg cursor-pointer font-semibold
-                 inline-flex items-center justify-center hover:bg-[#3e4743] transition-colors shadow-sm mt-4"
+                 inline-flex items-center justify-center transition-colors shadow-sm mt-4"
                    href="@content.HeroLink.Url">
                     @content.HeroLink.Name
                 </a>
