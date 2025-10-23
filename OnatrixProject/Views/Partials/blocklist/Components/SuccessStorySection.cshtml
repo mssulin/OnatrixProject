@@ -8,7 +8,7 @@
 }
 
 <section class="relative overflow-visible min-h-[540px] md:min-h-[640px] lg:h-[812px]
-                -mt-0 lg:-mt-[80px]
+                -mt-0 md:-mt-[80px] lg:-mt-[80px]
                 flex flex-col items-center
                 pt-12 md:pt-16 lg:pt-[80px] gap-10 lg:gap-14">
 
@@ -46,7 +46,7 @@
     </div>
 
     <!--- Image --->
-    <div class="absolute left-1/2 transform -translate-x-1/2 -bottom-[150px] md:-bottom-[70px] lg:-bottom-[100px] z-0">
+    <div class="absolute left-1/2 transform -translate-x-1/2 -bottom-[150px] md:-bottom-[90px] lg:-bottom-[100px] z-0">
         @if (content.SuccessImage != null)
         {
             <img src="@content.SuccessImage.Url()" alt="" class="w-[92vw] max-w-[900px] md:max-w-[1000px] h-auto object-contain"/>
