@@ -1,0 +1,66 @@
+{
+  "name": "Onatrix Rte",
+  "alias": "Onatrix.Rte",
+  "extensions": [
+    {
+      "type": "tiptapToolbarExtension",
+      "kind": "styleMenu",
+      "alias": "Onatrix.Tiptap.StyleMenu",
+      "name": "Onatrix Tiptap Style Menu",
+      "meta": {
+        "alias": "OnatrixStyleMenu",
+        "icon": "icon-palette",
+        "label": "Onatrix Styles"
+      },
+      "items": [
+        {
+          "label": "Paragraphs",
+          "items": [
+            {
+              "label": "Light",
+              "data": {
+                "tag": "p",
+                "class": "text-rte-xl font-light"
+              },
+              "appearance": { }
+            },
+            {
+              "label": "Normal",
+              "data": {
+                "tag": "p",
+                "class": "text-rte-xl font-regular"
+              },
+              "appearance":{}
+            },
+            {
+              "label": "Bold",
+              "data": { 
+                "tag": "p",
+                "class": "text-rte-xl font-bold"
+              }
+            }
+          ]
+        },
+        {
+          "label": "L - 40",
+          "items": [
+            {
+              "label": "Light",
+              "data": { 
+                "tag": "p",
+                "class": "text-rte-lg font-light" }
+            },
+            {
+              "label": "IDs",
+              "data": { "id": "bar" }
+            },
+            {
+              "label": "Mixed",
+              "data": { "tag": "span", "class": "foo", "id": "bar" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

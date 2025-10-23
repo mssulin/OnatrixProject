@@ -41,7 +41,7 @@
                 @foreach (var item in selection)
                 {
                     <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
-                        <a class="font-bold text-primary hover:text-[var(--color-secondary)] transition-color" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                        <a class="font-bold text-primary hover:text-secondary transition-color" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                     </li>
                 }
             </ul>

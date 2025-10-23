@@ -1,0 +1,30 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using Umbraco.Cms.Core.Models
+@using ConfigurationExtensions = Microsoft.Extensions.Configuration.ConfigurationExtensions
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.AboutTeaserSection)Model.Content;
+}
+
+<section class="custom-container py-16">
+    <div class="max-w-[680px]">
+        
+        <div class="flex flex-col gap-2">
+            <p class="uppercase text-secondary font-bold">@content.AboutTeaserLabel</p>
+            <div class="text-[2rem] font-bold">
+                @content.AboutTeaserTitle
+            </div>
+
+            <div class="flex flex-col gap-3 mt-4">
+                <div class="text-xl font-light leading-tight text-[var(--color-body-text)]">@content.AboutTeaserCitation</div>
+                <div class="text-sm font-light leading-relaxed text-[var(--color-body-text)]">
+                    @content.AboutTeaserBody
+                </div>
+                <div class="flex flex-col gap-2">
+                    <img src="@content.SignatureImage?.Url()" class="w-[161px] h-full"/>
+                    <p>@content.SignatureName</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
