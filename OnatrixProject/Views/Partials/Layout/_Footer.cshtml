@@ -1,0 +1,13 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var rootContent = Umbraco.ContentAtRoot();
+    var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+}
+
+<section class="bg-black flex text-white w-full h-[63px]">
+    <div class="flex justify-center items-center gap-2 text-sm ml-80">
+        <p class="text-body-text">@siteSettings?.CopyrightText</p>
+        <p class="text-secondary">@siteSettings?.CreditName</p>
+    </div>
+</section>
