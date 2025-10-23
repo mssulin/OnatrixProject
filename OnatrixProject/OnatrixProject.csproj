@@ -29,6 +29,10 @@
       <None Include="wwwroot\css\input.css" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="App_Plugins\OnatrixRte\umbraco-package.json" />
+    </ItemGroup>
+
     <PropertyGroup>
         <!-- Razor files are needed for the backoffice to work correctly -->
         <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>

@@ -22,6 +22,12 @@ body {
     @apply font-poppins;
 }
 
+@layer components {
+    .custom-container {
+        @apply max-w-7xl mx-auto px-4;
+    }
+}
+
 .rte h3 {
     @apply text-[2.5rem] text-primary font-bold;
 }
