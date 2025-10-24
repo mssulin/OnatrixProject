@@ -55,6 +55,7 @@ yarn-*.log*
 # Local secrets
 **/appsettings.*.Development.json
 **/appsettings.Local.json
+/OnatrixProject/appsettings.json
 .env
 .env.*
 
@@ -68,3 +69,4 @@ yarn-*.log*
 *.snupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
+/OnatrixProject/appsettings.Development.json
