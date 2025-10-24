@@ -70,3 +70,6 @@ yarn-*.log*
 *.snupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
+
+# Images
+/OnatrixProject/wwwroot/images/
