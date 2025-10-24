@@ -13,10 +13,10 @@
 				@Html.GetBlockListHtml(Model.ServiceDetailsAsides)
 			</aside>
 
-			<div class="block w-px bg-border-grey"></div>
+			<div class="block w-px bg-border-gray"></div>
 
 			<div class="w-8/12 flex flex-col gap-2">
-				Content
+				<div class="rte">@Html.Raw(Model.ServiceDetailBody)</div>
 			</div>
 
 		</div>
