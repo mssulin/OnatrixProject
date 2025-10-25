@@ -1,0 +1,54 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.TestimonialSection)Model.Content;
+    var settings = Model.Settings as ContentModels.TestimonialSettings;
+
+    var bg = Model.Settings?.Value<string>("bgColor") ?? "#F7F7F7";
+    var rating = content.TestimonialRating;
+}
+
+<section class="py-12 flex flex-col gap-3" style="background-color:@bg;">
+    <div class="custom-container">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left">
+
+            <!--- Heading & Text --->
+            <div class="order-2 lg:order-1 flex flex-col gap-3 items-center lg:items-start">
+                <p class="text-secondary text-sm font-bold uppercase mb-2">@content.TestimonialLabel</p>
+                <h2 class="text-lg md:text-3xl font-bold">@content.TestimonialTitle</h2>
+                <div class="text-xs lg:text-3xl leading-relaxed lg:leading-normal rte mt-3 text-[var(--color-notel)]">
+                    @Html.Raw(content.TestimonialQuote)
+                </div>
+
+                <!--- Rating --->
+                <!--- Hjälpt av Chat GPT för att generera stjärnor baserat på nummer skrivet
+                i Rating i Umbraco --->
+                
+                <div class="flex justify-center lg:justify-start gap-2 mt-2">
+                    @for (var i = 1; i <= 5; i++)
+                    {
+                        if (i <= rating)
+                        {
+                            <i class="bi bi-star-fill"></i>
+                        }
+                        else
+                        {
+                            <i class="bi bi-star"></i>
+                        }
+                    }
+                </div>
+
+                <!--- Author --->
+                <div class="mt-4">
+                <p class="text-sm text-body-text">@content.AuthorName</p>
+                <p class="italic">@content.AuthorCompany</p>
+                </div>
+            </div>
+
+            <!--- Side Image --->
+            <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+                <img src="@content.TestimonialImage?.Url()" class="w-full h-auto object-cover rounded-lg"/>
+            </div>
+            </div>
+        </div>
+</section>
