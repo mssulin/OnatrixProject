@@ -51,6 +51,7 @@ yarn-*.log*
 **/umbraco/Data/*.sqlite.db-wal
 **/umbraco/Logs/
 **/wwwroot/media/
+**/umbraco/Data/
 
 # Local secrets
 **/appsettings.*.Development.json
