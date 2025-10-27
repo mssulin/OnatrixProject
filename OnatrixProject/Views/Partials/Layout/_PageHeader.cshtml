@@ -21,7 +21,7 @@
          [background-position:left_bottom,_right_top]">
     
     <div class="container mx-auto px-4">
-        <h1 class="text-center text-[2.5rem] text-primary font-bold">@Model.PageTitle</h1>
+        <h1 class="text-center text-2xl md:text-[2.5rem] label-primary">@Model.PageTitle</h1>
 
     <div class="flex justify-center gap-3 pt-3">
         @if (selection?.Length > 0)
@@ -32,7 +32,7 @@
                     var displayName = isFirstItem ? homePageDisplayName : item.Name;
                     
                     <li class="flex items-center">
-                        <a class="text-sm no-underline text-primary hover:text-secondary" href="@item.Url(PublishedUrlProvider)">@displayName</a>
+                        <a class="link-primary" href="@item.Url(PublishedUrlProvider)">@displayName</a>
                         <i class="bi bi-chevron-right ml-1 flex items-center justify-center text-[10px] leading-none text-primary"></i>
                     </li>
                     

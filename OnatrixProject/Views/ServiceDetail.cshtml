@@ -6,19 +6,23 @@
 
 <partial name="Partials/Layout/_PageHeader" model="(IPageHeader)Model"/>
 
-<section class="py-16">
+<section class="py-2 md:py-16">
 	<div class="custom-container">
-		<div class="flex flex-row justify-between">
-			<aside class="w-3/12 flex flex-col gap-4">
+		<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-10">
+
+			<!-- Aside -->
+			<aside class="w-full lg:w-3/12 flex flex-col gap-4 text-center md:text-left">
 				@Html.GetBlockListHtml(Model.ServiceDetailsAsides)
 			</aside>
 
-			<div class="block w-px bg-border-gray"></div>
+			<!-- Divider -->
+			<div class="hidden lg:block w-px bg-border-gray self-stretch"></div>
 
-			<div class="w-8/12 flex flex-col gap-2">
+			<!-- Body -->
+			<div class="w-full lg:w-8/12 flex flex-col gap-2 text-left">
 				<div class="rte">@Html.Raw(Model.ServiceDetailBody)</div>
 			</div>
-			
+
 		</div>
 	</div>
 </section>
