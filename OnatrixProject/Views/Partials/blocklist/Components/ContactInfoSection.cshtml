@@ -1,0 +1,93 @@
+@using Umbraco.Extensions
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    
+    /* För att återanvända sektioner som ContactInfo och Partners utan att behöva duplicera innehåll har det skapats
+     en global mapp (Shared Content) i Content trädet (roten) där innehållet av dessa sektioner lagras och 
+     hämtas via Content picker i respektive sektion för vald sida. Hjälpt av Chat GPT 5 */
+    
+    var content = (ContentModels.ContactInfoSection)Model.Content;
+
+    // Källa via Content Picker
+    var source = content.Value<ContentModels.ContactInfo>("contactSource");
+
+    // 2) Fallback (Contact Info under root)
+    var root = Umbraco.ContentAtRoot();
+    var fallback = root.OfType<ContentModels.ContactInfo>().FirstOrDefault();
+
+    var contact = source ?? fallback;
+
+    var bg = Model.Settings?.Value<string>("bgColor") ?? "#F7F7F7";
+
+    var contactTitle  = contact?.ContactTitle;
+    var addressLabel  = contact?.AddressLabel;
+    var contactAddress= contact?.ContactAddress ?? "Ingen adress angiven";
+    var phoneLabel    = contact?.PhoneLabel;
+    var phone         = contact?.ContactPhone ?? "Inget telefonnummer angivet";
+    var emailLabel    = contact?.EmailLabel;
+    var email         = contact?.ContactEmail ?? "Inget email address angivet";
+}
+
+<!--- Backgrundssektionen är genererad av Chat GPT för rätt placering av bilderna --->
+
+<section class="relative overflow-hidden" style="background-color:@bg;">
+    <div class="custom-container relative grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
+
+        <!--- Background--->
+        <div class="order-1 lg:order-1 relative md:pt-16 md:pl-4 lg:pl-0">
+
+            <!--- Dot pattern --->
+            <div class="pointer-events-none absolute -right-10 bottom-0 md:-right-0 h-[650px] w-[220px] lg:h-[550px] lg:w-[250px]
+                  bg-[url('/images/backgrounds/dot-pattern.png')] bg-repeat opacity-30 z-0"></div>
+            
+            <!--- Rectangle --->
+            <img src="/images/backgrounds/bg-primary.png"
+                 alt=""
+                 class="absolute bottom-0 left-0 md:left-4 lg:left-10 z-10 max-w-[600px] w-full h-full object-cover"/>
+            
+            <!--- Image --->
+            <img src="/images/backgrounds/contactimg-bg.png"
+                 alt=""
+                 class="relative z-10 max-w-[420px] w-full md:max-w-[460px] lg:max-w-[480]
+                        mx-auto md:mx-4 lg:mx-12 h-auto object-cover"/>
+        </div>
+
+        <!--- Text --->
+        <div class="order-2 text-center lg:text-left flex flex-col items-center lg:items-start gap-4 lg:pl-26">
+            <h2 class="text-3xl lg:text-4xl font-bold max-w-[200px] md:max-w-[400px]">@contactTitle</h2>
+
+            <ul class="mt-2 space-y-4">
+
+                <!--- Address --->
+                <li class="flex flex-col items-center lg:items-start gap-1">
+                    <div class="inline-flex items-center gap-2">
+                        <i class="bi bi-geo-alt contact-icon"></i>
+                        <span class="font-semibold">@addressLabel</span>
+                    </div>
+                    <span class="text-base italic">@contactAddress</span>
+                </li>
+
+                <!--- Phone --->
+                <li class="flex flex-col items-center lg:items-start gap-1">
+                    <div class="inline-flex items-center gap-2">
+                        <i class="bi bi-telephone contact-icon"></i>
+                        <span class="font-semibold">@phoneLabel</span>
+                    </div>
+                    <span class="text-base italic">@phone</span>
+                </li>
+
+                <!--- Email --->
+                <li class="flex flex-col items-center lg:items-start gap-1">
+                    <div class="inline-flex items-center gap-2">
+                        <i class="bi bi-envelope contact-icon"></i>
+                        <span class="font-semibold">@emailLabel</span>
+                    </div>
+                    <span class="text-base italic">@email</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</section>

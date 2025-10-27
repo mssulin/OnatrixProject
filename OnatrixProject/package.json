@@ -2,12 +2,10 @@
   "name": "onatrixproject",
   "version": "1.0.0",
   "scripts": {
-    "build": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --minify",
-    "watch": "tailwindcss -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --watch"
+    "dev": "npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --minify"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0"
+    "@tailwindcss/cli": "^4.1.16"
   }
 }

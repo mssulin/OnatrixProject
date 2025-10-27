@@ -3,42 +3,49 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
 @{
-    var rootContent = Umbraco.ContentAtRoot();
-    var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+    var root = Umbraco.ContentAtRoot();
 
-    var contactAddress = siteSettings?.ContactAddress ?? "Ingen address angiven" ;
+    var siteSettings = root.OfType<ContentModels.SiteSettings>().FirstOrDefault();
+    
+    /* Hämtning av address från Contact info i roten genererat av Chat GPT 5*/
+    var contactInfo = root
+        .SelectMany(x => x.DescendantsOrSelf()) // Letar efter undersidor i alla root sidor 
+        .OfType<ContentModels.ContactInfo>()      // Filterar efter Contact info
+        .FirstOrDefault();  // Hämtar om den finns
+
+    var contactAddress = contactInfo?.ContactAddress ?? "Ingen adress angiven";
 }
 
 <div class="bg-primary">
     <div class="custom-container flex items-center justify-between">
         <p class="text-xs text-white">@contactAddress</p>
-        
+
         <div class="flex text-white">
             @if (siteSettings?.PlatformList != null)
             {
                 foreach (var item in siteSettings.PlatformList)
                 {
-                    if (item.Content is SocialMediaItem mediaItem)
+                    if (item.Content is ContentModels.SocialMediaItem mediaItem)
                     {
                         switch (mediaItem.PlatformName!.ToLower())
                         {
                             case "facebook":
-                                <a href="@mediaItem.PlatformAccountUrl" target="_blank" 
+                                <a href="@mediaItem.PlatformAccountUrl" target="_blank"
                                    class="flex items-center justify-center p-3 text-base text-white border-l border-border-grey last:border-r">
                                     <i class="bi bi-facebook"></i>
                                 </a>
                                 break;
-                                
-                                case "x" :
-                                <a href="@mediaItem.PlatformAccountUrl" target="_blank" 
+
+                            case "x":
+                                <a href="@mediaItem.PlatformAccountUrl" target="_blank"
                                    class="flex items-center justify-center p-3 text-base text-white border-l border-border-grey last:border-r">
                                     <i class="bi bi-twitter-x"></i>
                                 </a>
                                 break;
-                                
-                                case "linkedin":
-                                <a href="@mediaItem.PlatformAccountUrl" target="_blank" 
-                                   class="flex items-center justify-center p-3 text-base text-[var(--color-white)]] border-l border-border-grey last:border-r">
+
+                            case "linkedin":
+                                <a href="@mediaItem.PlatformAccountUrl" target="_blank"
+                                   class="flex items-center justify-center p-3 text-base text-[var(--color-white)] border-l border-border-grey last:border-r">
                                     <i class="bi bi-linkedin"></i>
                                 </a>
                                 break;

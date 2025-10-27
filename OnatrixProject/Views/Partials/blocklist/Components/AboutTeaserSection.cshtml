@@ -4,12 +4,12 @@
     var content = (ContentModels.AboutTeaserSection)Model.Content;
 }
 
-<section class="custom-container py-10 md:py-16 lg:py-20">
+<section class="custom-container py-10 md:py-16 lg:pt-32">
     <div class="max-w-[680px] mx-auto lg:mx-0 text-center md:text-left lg:text-left">
 
         <!--- Heading --->
         <div class="flex flex-col gap-2 md:gap-2">
-            <p class="uppercase text-secondary font-bold text-sm md:text-sm">@content.AboutTeaserLabel</p>
+            <p class="label-secondary text-sm md:text-sm">@content.AboutTeaserLabel</p>
             <div class="text-[1.75rem] md:text-3xl lg:text-4xl font-bold">
                 @content.AboutTeaserTitle
             </div>
@@ -23,7 +23,9 @@
 
                 <!--- Signature --->
                 <div class="flex flex-col gap-2 pt-2 md:pt-3 items-center md:items-start">
-                    <img src="@content.SignatureImage?.Url()" class="w-[120px] md:w-[161px] h-auto"/>
+                    <img src="@content.SignatureImage?.Url()"
+                         class="img-auto max-w-[161px w-full h-auto]"
+                         alt="@content.SignatureName" />
                     <p class="text-sm md:text-base">@content.SignatureName</p>
                 </div>
             </div>
