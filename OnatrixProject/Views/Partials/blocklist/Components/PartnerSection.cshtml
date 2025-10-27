@@ -1,25 +1,38 @@
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
 @using Umbraco.Cms.Core.Models
+@using Umbraco.Extensions
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
 @{
+    /* För att återanvända sektioner som ContactInfo och Partners utan att behöva duplicera innehåll har det skapats
+     en global mapp (Shared Content) i Content trädet (roten) där innehållet av dessa sektioner lagras och
+     hämtas via Content picker i respektive sektion för vald sida. Hjälpt av Chat GPT 5*/
+    
     var content = (ContentModels.PartnerSection)Model.Content;
-    var partnerList = content.PartnerList;
+
+    // Källa via Content Picker
+    var source = content.Value<IPublishedContent>("partnerSource");
+    var partners = source as ContentModels.Partners;
+
+    // Lista
+    var partnerList = partners?.PartnerList;
 }
 
-<section class="custom-container pt-44 sm:pt-12 md:pt-28 lg:my-16">
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6
-                gap-x-6 gap-y-8 sm:gap-x-8 sm:gap-y-10 md:gap-x-10 md:gap-y-12 place-items-center">
-        @if (partnerList != null)
-        {
+@if (partnerList != null && partnerList.Any())
+{
+    <section class="custom-container pt-44 sm:pt-12 md:pt-28 lg:my-16">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6
+                    gap-x-6 gap-y-8 sm:gap-x-8 sm:gap-y-10 md:gap-x-10 md:gap-y-12 place-items-center">
             @foreach (var block in partnerList)
             {
                 var partner = (ContentModels.PartnerItem)block.Content;
-
+                
                 <div class="flex items-center justify-center">
-                    <img src="@partner.PartnerLogo.Url()"
-                         alt="@partner.PartnerLogo.Name" class="object-contain w-auto max-h-10 sm:max-h-14 lg:max-h-16"/>
+                    <img src="@partner.PartnerLogo?.Url()"
+                         alt="@partner.PartnerLogo?.Name"
+                         class="object-contain w-auto max-h-10 sm:max-h-14 lg:max-h-16" />
                 </div>
             }
-        }
-    </div>
-</section>
+        </div>
+    </section>
+}

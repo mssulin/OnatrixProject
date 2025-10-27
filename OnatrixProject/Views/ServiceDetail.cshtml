@@ -18,7 +18,9 @@
 			<div class="w-8/12 flex flex-col gap-2">
 				<div class="rte">@Html.Raw(Model.ServiceDetailBody)</div>
 			</div>
-
+			
 		</div>
 	</div>
 </section>
+
+@Html.GetBlockListHtml(Model.ServiceDetailSection)
