@@ -5,37 +5,36 @@
     var content = (ContentModels.HeroSection)Model.Content;
 }
 
-<section class="relative min-h-[480px] md:min-h[640px] flex items-center">
-
-        <!--- Background --->
+<section class="relative h-[380px] md:h-[320px] lg:h-[600px] flex items-start md:items-start">
+    <!-- Background -->
     <div class="absolute inset-0">
-        @if (content.HeroBgImg!= null)
-        {
-            <img src="@content.HeroBgImg.Url()" alt="" class="w-full h-full object-cover" />
-        }
+        <img src="@content.HeroBgImg.Url()" alt="" class="w-full h-full object-cover object-top" />
         <div class="absolute inset-0 bg-white/10"></div>
     </div>
 
-    <!--- Content --->
-    <div class="relative z-10 w-full px-6 md:px-10 lg:pl-32 xl:pl-80">
+    <!-- Content -->
+    <div class="relative z-10 w-full px-6 md:pl-24 lg:pl-84 pt-10 md:pt-2 lg:pt-28">
         <div class="max-w-[600px] flex flex-col gap-3 md:gap-4">
-            
-            <!--- Heading --->
-            <h1 class="text-[2rem] md:text-[3rem] lg:text-[4.5rem] font-bold leading-tight text-primary mb-2">
+
+            <!-- Heading -->
+            <h1 class="text-[2rem] md:text-[2.5rem] lg:text-[3.5rem] label-primary leading-tight">
                 @Html.Raw(content.HeroTitle)
             </h1>
-            <!--- Text --->
-            <div class="text-primary/90 text-base md:text-lg leading-relaxed">
+
+            <!-- Text -->
+            <div class="text-primary/90 text-base md:text-lg leading-relaxed text-center md:text-left">
                 @Html.Raw(content.HeroText)
             </div>
 
-            <!--- Link --->
+            <!-- Button -->
             @if (content.HeroLink != null)
             {
-                <a href="@content.HeroLink.Url"
-                   class="button-primary">
-                    @content.HeroLink.Name
-                </a>
+                <div class="flex justify-center md:justify-start">
+                    <a href="@content.HeroLink.Url"
+                       class="button-primary -mt-1 md:-mt-2 lg:mt-0">
+                        @content.HeroLink.Name
+                    </a>
+                </div>
             }
         </div>
     </div>

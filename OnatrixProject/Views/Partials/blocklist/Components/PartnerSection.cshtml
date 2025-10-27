@@ -20,9 +20,9 @@
 
 @if (partnerList != null && partnerList.Any())
 {
-    <section class="custom-container pt-44 sm:pt-12 md:pt-28 lg:my-16">
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6
-                    gap-x-6 gap-y-8 sm:gap-x-8 sm:gap-y-10 md:gap-x-10 md:gap-y-12 place-items-center">
+    <section class="custom-container pt-18 md:pt-32 mb-10 md:mb-16 lg:mb-12">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6
+                    gap-x-6 gap-y-8 md:gap-x-10 md:gap-y-12 place-items-center">
             @foreach (var block in partnerList)
             {
                 var partner = (ContentModels.PartnerItem)block.Content;
@@ -30,7 +30,7 @@
                 <div class="flex items-center justify-center">
                     <img src="@partner.PartnerLogo?.Url()"
                          alt="@partner.PartnerLogo?.Name"
-                         class="object-contain w-auto max-h-10 sm:max-h-14 lg:max-h-16" />
+                         class="block object-contain w-auto max-h-10 lg:max-h-16" />
                 </div>
             }
         </div>

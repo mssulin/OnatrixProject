@@ -21,7 +21,8 @@
 
 <header class="relative shadow-sm z-[999]">
     <nav class="max-w-7xl mx-auto flex items-center justify-between py-4">
-        
+
+        <!--- Logo --->
         @if (logo != null)
         {
             <a href="/" class="flex-shrink-0">
@@ -35,18 +36,20 @@
             </a>
         }
 
+        <!--- Links --->
         @if (selection?.Length > 0)
         {
             <ul class="flex items-center gap-16">
                 @foreach (var item in selection)
                 {
                     <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
-                        <a class="font-bold text-primary hover:text-secondary transition-color" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                        <a class="font-bold text-primary hover:text-secondary transition-colors" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                     </li>
                 }
             </ul>
         }
-        
+
+        <!--- Search --->
         <div class="flex items-center">
             <i class="bi bi-search text-lg text-primary"></i>
         </div>

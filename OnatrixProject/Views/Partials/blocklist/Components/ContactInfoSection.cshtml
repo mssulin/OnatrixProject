@@ -56,35 +56,35 @@
 
         <!--- Text --->
         <div class="order-2 text-center lg:text-left flex flex-col items-center lg:items-start gap-4 lg:pl-26">
-            <h2 class="text-3xl lg:text-4xl font-bold max-w-[200px] md:max-w-[400px]">@contactTitle</h2>
+            <h2 class="text-xl md:text-3xl lg:text-4xl font-bold max-w-[400px] md:max-w-[400px]">@contactTitle</h2>
 
             <ul class="mt-2 space-y-4">
 
                 <!--- Address --->
-                <li class="flex flex-col items-center lg:items-start gap-1">
-                    <div class="inline-flex items-center gap-2">
-                        <i class="bi bi-geo-alt contact-icon"></i>
-                        <span class="font-semibold">@addressLabel</span>
+                <li class="info-item">
+                    <div class="info-icon">
+                        <i class="bi bi-geo-alt"></i>
+                        <span class="info-label">@addressLabel</span>
                     </div>
-                    <span class="text-base italic">@contactAddress</span>
+                    <span class="info-text">@contactAddress</span>
                 </li>
 
                 <!--- Phone --->
-                <li class="flex flex-col items-center lg:items-start gap-1">
-                    <div class="inline-flex items-center gap-2">
-                        <i class="bi bi-telephone contact-icon"></i>
-                        <span class="font-semibold">@phoneLabel</span>
+                <li class="info-item">
+                    <div class="info-icon">
+                        <i class="bi bi-telephone"></i>
+                        <span class="info-label">@phoneLabel</span>
                     </div>
-                    <span class="text-base italic">@phone</span>
+                    <span class="info-text">@phone</span>
                 </li>
 
                 <!--- Email --->
-                <li class="flex flex-col items-center lg:items-start gap-1">
-                    <div class="inline-flex items-center gap-2">
-                        <i class="bi bi-envelope contact-icon"></i>
-                        <span class="font-semibold">@emailLabel</span>
+                <li class="info-item">
+                    <div class="info-icon">
+                        <i class="bi bi-envelope"></i>
+                        <span class="info-label">@emailLabel</span>
                     </div>
-                    <span class="text-base italic">@email</span>
+                    <span class="info-text mb-3 md:mb-0">@email</span>
                 </li>
             </ul>
         </div>
