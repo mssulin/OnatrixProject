@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("statDescription")]
-		public virtual string StatDescription => this.Value<string>(_publishedValueFallback, "statDescription");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString StatDescription => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "statDescription");
 
 		///<summary>
 		/// Number
@@ -70,6 +70,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("successItemTitle")]
-		public virtual string SuccessItemTitle => this.Value<string>(_publishedValueFallback, "successItemTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString SuccessItemTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "successItemTitle");
 	}
 }
