@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("authorCompany")]
-		public virtual string AuthorCompany => this.Value<string>(_publishedValueFallback, "authorCompany");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString AuthorCompany => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "authorCompany");
 
 		///<summary>
 		/// Name
@@ -63,7 +63,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("authorName")]
-		public virtual string AuthorName => this.Value<string>(_publishedValueFallback, "authorName");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString AuthorName => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "authorName");
 
 		///<summary>
 		/// Image
@@ -79,7 +79,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("testimonialLabel")]
-		public virtual string TestimonialLabel => this.Value<string>(_publishedValueFallback, "testimonialLabel");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString TestimonialLabel => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "testimonialLabel");
 
 		///<summary>
 		/// Quote
@@ -102,6 +102,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("testimonialTitle")]
-		public virtual string TestimonialTitle => this.Value<string>(_publishedValueFallback, "testimonialTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString TestimonialTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "testimonialTitle");
 	}
 }

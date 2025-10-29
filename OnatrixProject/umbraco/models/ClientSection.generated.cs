@@ -79,7 +79,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("clientTitle")]
-		public virtual string ClientTitle => this.Value<string>(_publishedValueFallback, "clientTitle");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ClientTitle => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "clientTitle");
 
 		///<summary>
 		/// Highlighted
@@ -87,6 +87,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("titleHighlighted")]
-		public virtual string TitleHighlighted => this.Value<string>(_publishedValueFallback, "titleHighlighted");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString TitleHighlighted => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "titleHighlighted");
 	}
 }
