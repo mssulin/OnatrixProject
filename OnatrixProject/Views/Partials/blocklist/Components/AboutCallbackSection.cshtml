@@ -3,7 +3,7 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     var content = (ContentModels.AboutCallbackSection)Model.Content;
-    var settings = Model.Settings as ContentModels.AboutCallbackSettings;
+    var settings = Model.Settings as ContentModels.CallbackSettings;
 
     var formVM = new CallbackFormViewModel
     {
@@ -11,27 +11,31 @@
     };
 }
 
-<section class="py-12">
-    <div class="custom-container flex gap-10">
+<section class="py-0 md:py-12">
+    <div class="custom-container flex flex-col md:flex-row gap-10">
         
-        <div class="flex flex-col w-7/12">
-            <div class="rte">
+        <!-- Body-->
+        <div class="flex flex-col w-full md:w-7/12">
+            <div class="rte text-center md:text-left mx-auto md:mx-0">
                 @Html.Raw(content.AboutCallbackBody)
             </div>
             </div>
         
-            <div class="flex flex-col w-5/12 shadow-md -mt-[11rem] z-[99]">
-                    <div class="bg-primary w-[510px] h-[100px]">
-                        <p class="text-secondary py-6 px-8 text-[1.875rem] font-bold">
+        <!-- Form -->
+        <div class="flex flex-col w-full md:w-5/12 shadow-md mt-10 md:-mt-[11rem] z-[99]">
+                    <div class="bg-primary w-full md:w-[510px] md:h-[100px]">
+                        <p class="text-white py-6 px-8 
+                                text-[1.5rem] md:text-[1.75] lg:text-[1.875rem] font-bold
+                                text-center md:text-left">
                             @(content.AboutCallbackTitle)
                         </p>
                     </div>
 
-                    <p class="text-sm italic py-6 px-8">
+                    <p class="text-sm italic py-6 px-8 text-center md:text-left">
                         @(content.AboutCallbackDesc)
                     </p>
                     
-                    <partial name="Forms/_CallbackForm" model="formVM"/>
+                    <partial name="Forms/_AboutCallbackForm" model="formVM"/>
                     
                     @if (TempData["FormSuccess"] != null)
                     {
