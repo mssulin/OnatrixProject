@@ -1,0 +1,25 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using OnatrixProject.ViewModels
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.HelpCard)Model.Content;
+
+    var formVM = new CallbackFormViewModel();
+}
+
+
+<div class="bg-primary overflow-hidden relative mt-10 rounded-md">
+    
+    <div class="relative z-10 p-6 text-white flex flex-col gap-2">
+        <h2 class="text-[1.375rem] font-semibold">@content.HelpCardLabel</h2>
+        <p class="text-[0.875rem] font-normal">@content.HelpCardBody</p>
+    </div>
+    
+    <img src="~/images/backgrounds/mail-bg.png"
+         alt="Map"
+         class="absolute z-0 left-20 -bottom-14
+                w-20 md:w-2 lg:w-[62px] lg:h-[40px]
+                translate-x-2 translate-y-2"/>
+    <partial name="Forms/_HelpForm" model="formVM"/>
+</div>
