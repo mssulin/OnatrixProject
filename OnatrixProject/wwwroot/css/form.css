@@ -1,0 +1,23 @@
+@layer components {
+    .form-input {
+        @apply w-full p-3 italic border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none;
+    }
+    .form-btn {
+        @apply w-full bg-accent text-primary text-center font-bold rounded-md cursor-pointer select-none py-3 px-12 text-[1.125rem];
+    }
+
+    .contact-form-btn {
+        @apply w-full bg-primary text-accent
+        text-center font-bold rounded-md
+        cursor-pointer select-none py-3 px-12 text-[1.125rem]
+        flex items-center justify-center;
+    }
+
+    .input-validation-error {
+        @apply border-red-500 focus:ring-1 focus:ring-red-500;
+    }
+
+    .field-validation-error {
+        @apply mt-1 block text-sm text-red-600;
+    }
+}

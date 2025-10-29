@@ -10,21 +10,21 @@
         <div class="w-full">
             <label asp-for="Name" class="sr-only"></label>
             <input asp-for="Name" type="text" placeholder="@Html.DisplayNameFor(x => x.Name)"
-                   class="w-full p-3 italic border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none"/>
+                   class="form-input"/>
             <span asp-validation-for="Name"></span>
         </div>
         
         <div class="w-full">
             <label asp-for="Email" class="sr-only"></label>
             <input asp-for="Email" type="text" placeholder="@Html.DisplayNameFor(x => x.Email)"
-                   class="w-full p-3 italic border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none"/>
+                   class="form-input"/>
             <span asp-validation-for="Email"></span>
         </div>
         
         <div class="w-full">
             <label asp-for="Phone" class="sr-only"></label>
             <input asp-for="Phone" type="text" placeholder="@Html.DisplayNameFor(x => x.Phone)"
-                   class="w-full p-3 italic border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none"/>
+                   class="form-input"/>
             <span asp-validation-for="Phone"></span>
         </div>
         
@@ -32,7 +32,7 @@
         <div class="w-full">
             <label asp-for="SelectedOption" class="sr-only"></label>
             <div class="relative">
-                <select asp-for="SelectedOption" class="appearance-none w-full p-3 pr-10 border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none">
+                <select asp-for="SelectedOption" class="appearance-none form-input">
                     <option value="" disabled hidden selected>Please select an option</option>
                     
                     @foreach (var o in Model.Options)

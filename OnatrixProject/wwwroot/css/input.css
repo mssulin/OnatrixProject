@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./form.css";
+@import "./contact.css";
 
 @theme {
     --color-primary: #4F5955;
@@ -49,6 +51,14 @@ body {
     .custom-container {
         @apply max-w-7xl mx-auto px-4;
     }
+
+    .label-primary {
+        @apply text-primary font-bold;
+    }
+
+    .label-secondary {
+        @apply uppercase text-secondary font-bold;
+    }
     
     .button-primary {
         @apply bg-primary text-white font-semibold
@@ -64,49 +74,6 @@ body {
     .social {
         @apply flex items-center justify-center p-3 
         text-base text-white border-l border-[var(--color-border-grey)] last:border-r;
-    }
-    
-    .label-primary {
-        @apply text-primary font-bold;
-    }
-    
-    .label-secondary {
-        @apply uppercase text-secondary font-bold;
-    }
-    
-    .info-item {
-        @apply flex flex-col items-center lg:items-start gap-1;
-    }
-    
-    .info-label {
-        @apply text-base text-primary font-semibold;
-    }
-    
-    .info-text {
-        @apply text-base italic;
-    }
-    
-    .info-icon {
-        @apply inline-flex items-center gap-2 text-secondary;
-    }
-    
-    .form-btn {
-        @apply w-full bg-accent text-primary text-center font-bold rounded-md cursor-pointer select-none py-3 px-12 text-[1.125rem];
-    }
-
-    .contact-form-btn {
-        @apply w-full bg-primary text-accent 
-        text-center font-bold rounded-md 
-        cursor-pointer select-none py-3 px-12 text-[1.125rem]
-        flex items-center justify-center;
-    }
-    
-    .input-validation-error {
-        @apply border-red-500 focus:ring-1 focus:ring-red-500;
-    }
-    
-    .field-validation-error {
-        @apply mt-1 block text-sm text-red-600;
     }
 }
 

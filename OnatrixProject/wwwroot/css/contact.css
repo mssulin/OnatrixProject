@@ -1,0 +1,17 @@
+@layer components {
+    .info-item {
+        @apply flex flex-col items-center lg:items-start gap-1;
+    }
+
+    .info-label {
+        @apply text-base text-primary font-semibold;
+    }
+
+    .info-text {
+        @apply text-base italic;
+    }
+
+    .info-icon {
+        @apply inline-flex items-center gap-2 text-secondary;
+    }
+}
