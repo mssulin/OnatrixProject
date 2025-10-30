@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace OnatrixProject.ViewModels;
 
-public class CallbackFormViewModel
+public class QuestionFormViewModel
 {
+    
     [Required(ErrorMessage = "Name is required")]
     [Display(Name = "Name")]
     public string Name { get; set; } = null!;
@@ -14,13 +14,6 @@ public class CallbackFormViewModel
     [RegularExpression(@"^[\w\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}$",
         ErrorMessage = "Please enter a valid email address")]
     public string Email { get; set; } = null!;
-
-    [Required(ErrorMessage = "Phone is required")]
-    [Display(Name = "Phone")]
-    public string Phone { get; set; } = null!;
-
-    [Required(ErrorMessage = "Please select an option")]
-    public string SelectedOption { get; set; } = null!;
-
-    [BindNever] public IEnumerable<string> Options { get; set; } = [];
- }
+    
+    public string Question { get; set; } = null!;
+}

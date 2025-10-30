@@ -1,0 +1,38 @@
+@using OnatrixProject.ViewModels
+@model OnatrixProject.ViewModels.QuestionFormViewModel
+@using (Html.BeginUmbracoForm("HandleQuestionForm", "Form", FormMethod.Post,
+            new { novalidate = "novalidate", id = "questionForm" }))
+{
+    <section class="py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div>
+            <label asp-for="Name" class="sr-only"></label>
+            <input asp-for="Name"
+                   type="text"
+                   placeholder="@Html.DisplayNameFor(x => x.Name)"
+                   class="bg-white form-input rounded-md"/>
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <div>
+            <label asp-for="Email" class="sr-only"></label>
+            <input asp-for="Email"
+                   type="text"
+                   placeholder="@Html.DisplayNameFor(x => x.Email)"
+                   class="bg-white form-input rounded-md"/>
+            <span asp-validation-for="Email"></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <label asp-for="Question" class="sr-only"></label>
+            <textarea asp-for="Question"
+                      placeholder="@Html.DisplayNameFor(x => x.Question)"
+                      class="bg-white form-input w-full h-[175px]"></textarea>
+            <span asp-validation-for="Question"></span>
+        </div>
+
+        <div class="col-span-1 md:col-span-2 flex justify-center items-center md:justify-start md:items-start">
+            <button type="submit" class="contact-form-btn w-[140px] h-[54px]">Submit</button>
+        </div>
+    </section>
+}
