@@ -1,0 +1,29 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using OnatrixProject.ViewModels
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.QuestionSection)Model.Content;
+
+    var formVM = new QuestionFormViewModel();
+}
+
+<section class="custom-container py-4">
+    <div class="">
+        <p>@content.QuestionFormTitle</p>
+        <partial name="Forms/_QuestionForm" model="formVM"/>
+        
+        @if (TempData["FormSuccess"] != null)
+        {
+            <div class="bg-green-50 text-green-700 p-4 mx-[2rem] mb-4 rounded-md">
+                @TempData["FormSuccess"]
+            </div>
+        } 
+        else if (TempData["FormError"] != null)
+        {
+            <div class="bg-red-50 text-red-700 p-4 mx-[2rem] mb-4 rounded-md">
+                @TempData["FormError"]
+            </div>
+        }
+    </div>
+</section>

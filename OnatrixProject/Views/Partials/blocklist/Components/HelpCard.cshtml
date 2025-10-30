@@ -5,7 +5,7 @@
 @{
     var content = (ContentModels.HelpCard)Model.Content;
 
-    var formVM = new CallbackFormViewModel();
+    var formVM = new HelpFormViewModel();
 }
 
 
@@ -22,4 +22,17 @@
                 w-20 md:w-2 lg:w-[62px] lg:h-[40px]
                 translate-x-2 translate-y-2"/>
     <partial name="Forms/_HelpForm" model="formVM"/>
+    
+    @if (TempData["FormSuccess"] != null)
+    {
+        <div class="bg-green-50 text-green-700 p-4 mx-[2rem] mb-4 rounded-md">
+            @TempData["FormSuccess"]
+        </div>
+    } 
+    else if (TempData["FormError"] != null)
+    {
+        <div class="bg-red-50 text-red-700 p-4 mx-[2rem] mb-4 rounded-md">
+            @TempData["FormError"]
+        </div>
+    }
 </div>
