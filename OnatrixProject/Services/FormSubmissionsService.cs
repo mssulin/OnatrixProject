@@ -22,7 +22,7 @@ public class FormSubmissionsService(IContentService contentService)
             request.SetValue("callbackRequestName", model.Name);
             request.SetValue("callbackRequestEmail", model.Email);
             request.SetValue("callbackRequestPhone", model.Phone);
-            request.SetValue("callbackRequestOption", model.SelectedOption);
+            request.SetValue("callBackRequestOption", model.SelectedOption);
 
             var saveResult = _contentService.Save(request);
             return saveResult.Success;

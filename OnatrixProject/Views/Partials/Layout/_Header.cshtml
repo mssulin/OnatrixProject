@@ -12,47 +12,79 @@
 @{
     var rootContent = Umbraco.ContentAtRoot();
     var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
-
     var logo = siteSettings?.SiteLogo;
-    
     var selection = Model.Root().Children().Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
 }
 
-
 <header class="relative shadow-sm z-[999]">
-    <nav class="max-w-7xl mx-auto flex items-center justify-between py-4">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between py-4 px-4 md:px-0">
+    
+    <!-- Logo -->
+    @if (logo != null)
+    {
+      <a href="/" class="flex-shrink-0">
+        <img src="@logo.Url()" alt="Onatrix" class="h-8 w-auto"/>
+      </a>
+    }
+    else
+    {
+      <a href="/" class="flex-shrink-0 font-bold text-primary text-lg">Onatrix</a>
+    }
 
-        <!--- Logo --->
-        @if (logo != null)
+    <!-- Desktop links -->
+    @if (selection?.Length > 0)
+    {
+      <ul class="hidden md:flex items-center gap-16">
+        @foreach (var item in selection)
         {
-            <a href="/" class="flex-shrink-0">
-                <img src="@logo.Url()" alt="Onatrix"/>
-            </a>
+          <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
+            <a class="font-bold text-primary hover:text-secondary transition-colors"
+               href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+          </li>
         }
-        else
-        {
-            <a href="/" class="flex-shrink-0">
-                Onatrix
-            </a>
-        }
+      </ul>
+    }
 
-        <!--- Links --->
-        @if (selection?.Length > 0)
-        {
-            <ul class="flex items-center gap-16">
-                @foreach (var item in selection)
-                {
-                    <li class="@(item.IsAncestorOrSelf(Model) ? "current" : null)">
-                        <a class="font-bold text-primary hover:text-secondary transition-colors" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
-                    </li>
-                }
-            </ul>
-        }
+    <!-- Desktop search -->
+    <div class="hidden md:flex items-center">
+      <i class="bi bi-search text-lg text-primary"></i>
+    </div>
 
-        <!--- Search --->
-        <div class="flex items-center">
-            <i class="bi bi-search text-lg text-primary"></i>
-        </div>
-    </nav>
+    <!-- Dropdown (mobile) -->
+    <button type="button"
+            class="md:hidden inline-flex items-center gap-2 text-primary"
+            aria-controls="mobile-nav" aria-expanded="false"
+            data-mobile-trigger>
+      <i class="bi bi-list text-2xl"></i>
+    </button>
+  </nav>
+
+  <!-- Dropdown content -->
+  <div id="mobile-nav" class="hidden w-full border-t border-gray-200 bg-white md:hidden">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4">
+
+      <!-- Search -->
+      <form action="/search" method="get" class="flex items-center gap-2">
+        <label for="s" class="sr-only">Sök</label>
+        <input id="s" name="s" type="search" placeholder="Sök…"
+               class="w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/40" />
+        <button type="submit" class="p-2 rounded-md border border-gray-300">
+          <i class="bi bi-search text-primary"></i>
+        </button>
+      </form>
+
+      <!-- Links-->
+      @if (selection?.Length > 0) {
+        <ul class="flex flex-col gap-1">
+          @foreach (var item in selection) {
+            <li>
+              <a class="block py-2 font-bold text-primary hover:text-secondary transition-colors"
+                 href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
 </header>
 
