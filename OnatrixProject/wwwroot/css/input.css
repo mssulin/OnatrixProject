@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./form.css";
 @import "./contact.css";
+@import "./swiper.css";
 
 @theme {
     --color-primary: #4F5955;
