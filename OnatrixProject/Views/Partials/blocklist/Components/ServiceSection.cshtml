@@ -5,8 +5,16 @@
     var settings = Model.Settings as ContentModels.ServiceSettings;
 
     var current = Umbraco.AssignedContentItem;
+    
+    // Koderna för att specifikt definera ServicePage har genererats av Chat GPT. 
+    
+    // Hämtar vilken sida sektionen ligger på via alias i Umbraco
+    var isServicePage = current?.ContentType?.Alias == ContentModels.ServicePage.ModelTypeAlias;
     var siteRoot = current?.Root();
-    var servicePage = siteRoot?.Children<ServicePage>()?.FirstOrDefault();
+    var servicePage = isServicePage
+        ? current as ContentModels.ServicePage
+        : siteRoot?.Children<ServicePage>()?.FirstOrDefault();
+    
     var items = servicePage?.Children<ServiceDetail>()?.OrderByDescending(x => x.CreateDate).ToList() ?? [];
 }
 
@@ -23,33 +31,51 @@
         
             @if (items.Any())
             {
-                    
-                <!-- Swiper -->
-                <div class="swiper serviceSwiper !-mx-4 md:!mx-0">
+                if (isServicePage) // Visa endast Swiper på Servicepage 
+                {
+                    <!-- Swiper -->
+                    <div class="mt-3">
+                        <div class="swiper serviceSwiper !-mx-4 md:!mx-0">
                        
-                    <div class="swiper-wrapper">
+                            <div class="swiper-wrapper">
+                                @foreach (var item in items)
+                                {
+                                    <div class="swiper-slide bg-white border-2 border-white-100 w-full min-h-[350px] flex flex-col overflow-hidden transition-all hover:border-secondary hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]">
+                                        <a class="block no-underline" href="@item.Url()">
+                                            <h4 class="p-[1.5rem] font-semibold text-primary text-[1.3rem]">@item.Name</h4>
+                                            <img class="block w-full h-48 md:h-56 lg:h-[220px] object-cover" src="@item.ServiceDetailThumbnail?.Url()"/>
+                                            <div class="text-sm p-[1.5rem] mt-auto">@item.ServiceDetailExcerpt</div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                    
+                            <div class="custom-pagination">
+                                <div class="custom-prev">Prev</div>
+                                <div class="swiper-pagination"></div>
+                                <div class="custom-next">Next</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                { // Vanlig grid utan Swiper på Homepage
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                         @foreach (var item in items)
                         {
-                            <div class="swiper-slide bg-white border-2 border-white-100 w-full min-h-[350px] flex flex-col overflow-hidden transition-all hover:border-secondary hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]">
-                                <a class="block no-underline" href="@item.Url()">
-                                    <h4 class="p-[1.5rem] font-semibold text-primary text-[1.3rem]">@item.Name</h4>
-                                    <img class="block w-full h-48 md:h-56 lg:h-[220px] object-cover" src="@item.ServiceDetailThumbnail?.Url()"/>
-                                    <div class="text-sm p-[1.5rem] mt-auto">@item.ServiceDetailExcerpt</div>
-                                </a>
-                            </div>
+                            <a class="block no-underline bg-white border-2 border-white-100 w-full min-h-[350px] flex flex-col overflow-hidden transition-all hover:border-secondary hover:shadow-[0_4px_15px_rgba(0,0,0,0.1)]" href="@item.Url()">
+                                <h4 class="p-[1.5rem] font-semibold text-primary text-[1.3rem]">@item.Name</h4>
+                                <img class="block w-full h-48 md:h-56 lg:h-[220px] object-cover" src="@item.ServiceDetailThumbnail?.Url()" alt="@item.Name" />
+                                <div class="text-sm p-[1.5rem] mt-auto">@item.ServiceDetailExcerpt</div>
+                            </a>
                         }
                     </div>
-                    
-                    <div class="custom-pagination">
-                        <div class="custom-prev">Prev</div>
-                        <div class="swiper-pagination"></div>
-                        <div class="custom-next">Next</div>
-                    </div>
-                </div>
-            }
+                }
+                }
             else
             {
                 <p>No services available</p>
             }
+        
         </div>
 </section>
