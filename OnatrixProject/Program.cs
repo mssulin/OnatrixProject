@@ -18,6 +18,8 @@ WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
 
+app.UseStaticFiles();
+
 
 app.UseUmbraco()
     .WithMiddleware(u =>

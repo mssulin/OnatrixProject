@@ -21,7 +21,10 @@
 
     var bg = Model.Settings?.Value<string>("bgColor") ?? "#F7F7F7";
 
+    var dotPattern = Url.Content("~/images/backgrounds/dot-pattern.png");
+    var rectangle  = Url.Content("~/images/backgrounds/bg-primary.png");
     var bgImage = contact?.ContactBg.Url();
+    
     var contactTitle  = contact?.ContactTitle;
     var addressLabel  = contact?.AddressLabel;
     var contactAddress= contact?.ContactAddress ?? "Ingen adress angiven";
@@ -41,10 +44,10 @@
 
             <!--- Dot pattern --->
             <div class="pointer-events-none absolute -right-10 bottom-0 md:-right-0 h-[650px] w-[220px] lg:h-[550px] lg:w-[250px]
-                  bg-[url('/images/backgrounds/dot-pattern.png')] bg-repeat opacity-30 z-0"></div>
+                  bg-[url('@dotPattern')] bg-repeat opacity-30 z-0"></div>
             
             <!--- Rectangle --->
-            <img src="/images/backgrounds/bg-primary.png"
+            <img src="@rectangle"
                  alt=""
                  class="absolute bottom-0 left-0 md:left-4 lg:left-10 z-10 max-w-[600px] w-full h-full object-cover"/>
             
