@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using OnatrixProject.Interfaces;
 using OnatrixProject.Services;
 using OnatrixProject.ViewModels;
 using Umbraco.Cms.Core.Cache;
@@ -18,13 +19,16 @@ public class FormController(
     AppCaches appCaches,
     IProfilingLogger profilingLogger,
     IPublishedUrlProvider publishedUrlProvider,
-    FormSubmissionsService formSubmissionsService)
+    FormSubmissionsService formSubmissionsService,
+    IEmailService emailService)
     : SurfaceController(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger,
         publishedUrlProvider)
 {
     private readonly FormSubmissionsService _formSubmissionsService = formSubmissionsService;
+    private readonly IEmailService _emailService = emailService;
 
-    public IActionResult HandleCallbackForm(CallbackFormViewModel model)
+    [HttpPost]
+    public async Task <IActionResult> HandleCallbackForm(CallbackFormViewModel model)
     {
         if (!ModelState.IsValid)
         {
@@ -37,12 +41,37 @@ public class FormController(
             TempData["FormError"] = "Something went wrong while submitting your request. Please try again later";
             return RedirectToCurrentUmbracoPage();
         }
+
+        // Om användaren skrivit epostaddress i formuläret
+        if (!string.IsNullOrWhiteSpace(model.Email))
+        {
+            // Skicka detta
+            var subject = "We recieved your callback request";
+            var body = $@"
+                    <p>Hi {model.Name},</p>
+                    <p>Thank you for your request.</p>
+                    <p>Best regards,<br/>Onatrix</p>";
+
+            try
+            {
+                await _emailService.SendAsync(model.Email, subject, body, replyTo: model.Email);
+            }
+            
+            
+            catch
+            {
+                TempData["FormError"] = "Error sending confirmation email";
+            }
+            
+            
+        }
         
         TempData["FormSuccess"] = "Thank you! Your request has been received and we will get back to you soon";
         return RedirectToCurrentUmbracoPage();
     }
     
-    public IActionResult HandleHelpForm(HelpFormViewModel model)
+    [HttpPost]
+    public async Task <IActionResult> HandleHelpForm(HelpFormViewModel model)
     {
         if (!ModelState.IsValid)
         {
@@ -56,11 +85,30 @@ public class FormController(
             return RedirectToCurrentUmbracoPage();
         }
         
+        if (!string.IsNullOrWhiteSpace(model.Email))
+        {
+            var subject = "We recieved your help request";
+            var body = $@"
+                    <p>Hi!</p>
+                    <p>Thank you for your help request.</p>
+                    <p>Best regards,<br/>Onatrix</p>";
+
+            try
+            {
+                await _emailService.SendAsync(model.Email, subject, body, replyTo: model.Email);
+            }
+            catch
+            {
+                TempData["FormError"] = "Error sending confirmation email";
+            }
+        }
+        
         TempData["FormSuccess"] = "Thank you! Your request has been received and we will get back to you soon";
         return RedirectToCurrentUmbracoPage();
     }
     
-    public IActionResult HandleQuestionForm(QuestionFormViewModel model)
+    [HttpPost]
+    public async Task <IActionResult> HandleQuestionForm(QuestionFormViewModel model)
     {
         if (!ModelState.IsValid)
         {
@@ -72,6 +120,24 @@ public class FormController(
         {
             TempData["FormError"] = "Something went wrong while submitting your request. Please try again later";
             return RedirectToCurrentUmbracoPage();
+        }
+        
+        if (!string.IsNullOrWhiteSpace(model.Email))
+        {
+            var subject = "We recieved your question";
+            var body = $@"
+                    <p>Hi {model.Name},</p>
+                    <p>Thank you for your question. We will get back as soon as we can.</p>
+                    <p>Best regards,<br/>Onatrix</p>";
+
+            try
+            {
+                await _emailService.SendAsync(model.Email, subject, body, replyTo: model.Email);
+            }
+            catch
+            {
+                TempData["FormError"] = "Error sending confirmation email";
+            }
         }
         
         TempData["FormSuccess"] = "Thank you! Your question has been received and we will get back to you soon";
