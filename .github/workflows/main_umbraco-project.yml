@@ -20,7 +20,7 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
-      # (Valfritt men bra om du bygger mini.css)
+      
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -62,3 +62,4 @@ jobs:
           app-name: umbraco-project                 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_85CA786C4E8E480B80E27DC0F1817A83 }}
           package: ./webapp
+
