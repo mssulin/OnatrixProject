@@ -66,6 +66,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string ContactAddress => this.Value<string>(_publishedValueFallback, "contactAddress");
 
 		///<summary>
+		/// Bg
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("contactBg")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ContactBg => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "contactBg");
+
+		///<summary>
 		/// Email
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.2.0+4eae48e")]

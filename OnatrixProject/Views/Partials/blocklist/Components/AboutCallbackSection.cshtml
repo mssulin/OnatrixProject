@@ -11,45 +11,47 @@
     };
 }
 
-<section class="py-0 md:py-12">
+<section class="py-0 md:py-8 lg:py-12 -mt-6 md:-mt-10 lg:mt-0">
     <div class="custom-container flex flex-col md:flex-row gap-10">
         
         <!-- Body-->
-        <div class="flex flex-col w-full md:w-7/12">
+        <div class="flex flex-col w-full md:w-7/12 md:-mt-6 lg:mt-0">
             <div class="rte text-center md:text-left mx-auto md:mx-0">
                 @Html.Raw(content.AboutCallbackBody)
             </div>
             </div>
         
         <!-- Form -->
-        <div class="flex flex-col w-full md:w-5/12 shadow-md mt-10 md:-mt-[11rem] z-[99]">
-                    <div class="bg-primary w-full md:w-[510px] md:h-[100px]">
-                        <p class="text-white py-6 px-8 
-                                text-[1.5rem] md:text-[1.75] lg:text-[1.875rem] font-bold
-                                text-center md:text-left">
-                            @(content.AboutCallbackTitle)
-                        </p>
-                    </div>
-
-                    <p class="text-sm italic py-6 px-8 text-center md:text-left">
-                        @(content.AboutCallbackDesc)
+        <div class="flex flex-col w-full md:w-5/12 lg:-mt-[11rem] shadow-md
+                mt-4 md:-mt-[16rem] z-[99999]">
+            
+                <div class="bg-primary w-full md:w-[510px] md:h-[100px]">
+                    <p class="text-white py-6 px-8 
+                  text-[1.5rem] md:text-[1.75rem] lg:text-[1.875rem] font-bold
+                  text-center md:text-left">
+                        @(content.AboutCallbackTitle)
                     </p>
-                    
-                    <partial name="Forms/_AboutCallbackForm" model="formVM"/>
-                    
-                    @if (TempData["FormSuccess"] != null)
-                    {
-                        <div class="bg-green-50 text-green-700 p-4 mx-[2rem] mb-4 rounded-md">
-                            @TempData["FormSuccess"]
-                        </div>
-                    } 
-                    else if (TempData["FormError"] != null)
-                    {
-                        <div class="bg-red-50 text-red-700 p-4 mx-[2rem] mb-4 rounded-md">
-                            @TempData["FormError"]
-                        </div>
-                    }
-                    
-            </div>
+                </div>
+
+                <p class="text-sm italic py-6 px-8 text-center md:text-left">
+                    @(content.AboutCallbackDesc)
+                </p>
+
+            <partial name="Forms/_AboutCallbackForm" model="formVM"/>
+
+            @if (TempData["FormSuccess"] != null)
+            {
+                <div class="bg-green-50 text-green-700 p-4 mx-[2rem] mb-4 rounded-md">
+                    @TempData["FormSuccess"]
+                </div>
+            }
+            else if (TempData["FormError"] != null)
+            {
+                <div class="bg-red-50 text-red-700 p-4 mx-[2rem] mb-4 rounded-md">
+                    @TempData["FormError"]
+                </div>
+            }
+
+        </div>
     </div>
 </section>

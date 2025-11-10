@@ -21,6 +21,7 @@
 
     var bg = Model.Settings?.Value<string>("bgColor") ?? "#F7F7F7";
 
+    var bgImage = contact?.ContactBg.Url();
     var contactTitle  = contact?.ContactTitle;
     var addressLabel  = contact?.AddressLabel;
     var contactAddress= contact?.ContactAddress ?? "Ingen adress angiven";
@@ -48,10 +49,13 @@
                  class="absolute bottom-0 left-0 md:left-4 lg:left-10 z-10 max-w-[600px] w-full h-full object-cover"/>
             
             <!--- Image --->
-            <img src="/images/backgrounds/contactimg-bg.png"
-                 alt=""
-                 class="relative z-10 max-w-[420px] w-full md:max-w-[460px] lg:max-w-[480]
+            @if (!string.IsNullOrWhiteSpace(bgImage))
+            {
+                <img src="@bgImage"
+                     alt=""
+                     class="relative z-10 max-w-[420px] w-full md:max-w-[460px] lg:max-w-[480]
                         mx-auto md:mx-4 lg:mx-12 h-auto object-cover"/>
+            }
         </div>
 
         <!--- Text --->
