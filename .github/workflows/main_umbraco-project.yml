@@ -1,55 +1,64 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP.Net Core app to Azure Web App - umbraco-project
+name: Build and deploy ASP.NET Core app to Azure Web App
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
+
+env:
+  PROJECT_PATH: OnatrixProject/OnatrixProject.csproj
+  PUBLISH_DIR: published
 
 jobs:
   build:
-    runs-on: windows-latest
-    permissions:
-      contents: read #This is required for actions/checkout
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up .NET Core
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.x'
+          dotnet-version: 9.0.x
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      # (Valfritt men bra om du bygger mini.css)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+      - name: Install NPM deps
+        run: npm ci
 
-      - name: Upload artifact for deployment job
+      - name: Build CSS (minify)
+        run: npm run build
+
+      - name: Restore
+        run: dotnet restore ${{ env.PROJECT_PATH }}
+
+      - name: Build
+        run: dotnet build ${{ env.PROJECT_PATH }} --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -o ${{ env.PUBLISH_DIR }} --no-restore
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: webapp
+          path: ${{ env.PUBLISH_DIR }}
 
   deploy:
-    runs-on: windows-latest
     needs: build
-    
+    runs-on: ubuntu-latest
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: .net-app
-      
+          name: webapp
+          path: ./webapp
+
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'umbraco-project'
-          slot-name: 'Production'
-          package: .
+          app-name: umbraco-project                 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_85CA786C4E8E480B80E27DC0F1817A83 }}
+          package: ./webapp
