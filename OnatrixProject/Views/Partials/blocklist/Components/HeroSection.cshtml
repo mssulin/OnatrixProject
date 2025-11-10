@@ -3,12 +3,16 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     var content = (ContentModels.HeroSection)Model.Content;
+    var hero = content?.HeroBgImg?.Url();
 }
 
 <section class="relative h-[380px] md:h-[320px] lg:h-[600px] flex items-start md:items-start">
     <!-- Background -->
     <div class="absolute inset-0">
-        <img src="@content.HeroBgImg.Url()" alt="" class="w-full h-full object-cover object-top" />
+        @if (!string.IsNullOrWhiteSpace(hero))
+        {
+            <img src="@hero" alt="@content?.HeroBgImg.Name" class="w-full h-full object-cover object-top"/>
+        }
         <div class="absolute inset-0 bg-white/10"></div>
     </div>
 
