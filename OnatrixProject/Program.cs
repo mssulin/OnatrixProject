@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using OnatrixProject.Services;
+using Umbraco.Cms.Core.DependencyInjection;
+using Umbraco.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

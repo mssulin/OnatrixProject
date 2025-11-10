@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --watch",
-    "build": "npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --minify"
+    "build": "npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/mini.css --minify"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.16"
